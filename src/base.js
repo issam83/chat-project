@@ -1,15 +1,15 @@
-import Rebase from 're-base';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import Rebase from 're-base'
+import firebase from 'firebase/app'
+import 'firebase/database'
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: 'AIzaSyCkmYhfILShqggrzXIfzIzuDqUPxzYgJNM',
-  authDomain: 'chatbox-app-33e92.firebaseapp.com',
-  databaseURL: 'https://chatbox-app-33e92.firebaseio.com'
-});
+    apiKey: "AIzaSyARv0hzcHNKEkFgJV4TlZPcnH_7taqYYyc",
+    authDomain: "chatbox-project-643b3.firebaseapp.com",
+    databaseURL: "https://chatbox-project-643b3.firebaseio.com",
+})
 
-const base = Rebase.createClass(firebase.database());
+const base = Rebase.createClass(firebase.database())
 
-export { firebaseApp };
+export { firebaseApp }
 
-export default base;
+export default base

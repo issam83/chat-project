@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 
  class Formulaire extends Component {
      state = {
-         message: ''
+         message: '',
+         length: this.props.length
      }
 
      createMessage = () => {
-         const {addMessage, pseudo} = this.props
+         const {addMessage, pseudo, length} = this.props
 
          const message = {
              pseudo,
@@ -15,7 +16,7 @@ import React, { Component } from 'react'
          addMessage(message)
 
          // Reset
-         this.setState({ message: ''})
+         this.setState({ message: '', length})
      }
 
     handleSubmit = event => {
@@ -25,7 +26,15 @@ import React, { Component } from 'react'
 
     handleChange = (event) => {
         const message = event.target.value
-        this.setState({ message })
+        const length = this.props.length - message.length
+        this.setState({ message, length })
+    }
+
+    handleKeyUp = (event) => {
+        if (event.key === 'Enter') {
+            // console.log('blabla',event.key)
+           return this.createMessage()
+        }
     }
     render() {
         return (
@@ -35,9 +44,10 @@ import React, { Component } from 'react'
                value={this.state.message}
                onChange={this.handleChange}
                required
-               maxLength='140' />
+               onKeyUp={this.handleKeyUp}
+               maxLength={this.props.length} />
                <div className='info'>
-                   140
+                   {this.state.length}
                </div>
                <button type='submit'>
                    Envoyer
